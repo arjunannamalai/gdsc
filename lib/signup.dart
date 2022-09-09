@@ -14,24 +14,38 @@ class _SignUpState extends State<SignUp> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        centerTitle: false,
-        title: Text(
-          "Sign up",
-          style: TextStyle(color: Colors.black),
-        ),
-      ),
-      body: Container(
-        child: Column(
-          children: <Widget>[
-            TextField(),
-            TextField(),
-            TextButton(onPressed: () {}, child: Text("submit")),
-            TextButton(onPressed: () {}, child: Text("google")),
-            TextButton(onPressed: (){}, child: Text("phone")),
-          ],
+      // appBar: AppBar(
+      //   backgroundColor: Colors.transparent,
+      //   elevation: 0,
+      //   centerTitle: false,
+      //   title: Text(
+      //     "Sign up",
+      //     style: TextStyle(color: Colors.black),
+      //   ),
+      // ),
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(32.0),
+          child: Container(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(
+                  'Sign Up',
+                  style: TextStyle(
+                      fontSize: 35,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black),
+                ),
+                TextField(),
+                TextField(),
+                TextButton(onPressed: () {}, child: Text("submit")),
+                TextButton(onPressed: () {}, child: Text("google")),
+                TextButton(onPressed: () {}, child: Text("phone")),
+              ],
+            ),
+          ),
         ),
       ),
     );
