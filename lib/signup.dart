@@ -1,6 +1,8 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, sort_child_properties_last, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:gdsc/homepage.dart';
+import 'package:gdsc/login.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);
@@ -10,39 +12,202 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+  Color fieldcolor = Colors.grey;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      // appBar: AppBar(
-      //   backgroundColor: Colors.transparent,
-      //   elevation: 0,
-      //   centerTitle: false,
-      //   title: Text(
-      //     "Sign up",
-      //     style: TextStyle(color: Colors.black),
-      //   ),
-      // ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(32.0),
           child: Container(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                Text(
-                  'Sign Up',
-                  style: TextStyle(
-                      fontSize: 35,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black),
+                Row(
+                  children: [
+                    Text(
+                      'Create account',
+                      style: TextStyle(
+                          fontSize: 35,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black),
+                    ),
+                  ],
                 ),
-                TextField(),
-                TextField(),
-                TextButton(onPressed: () {}, child: Text("submit")),
-                TextButton(onPressed: () {}, child: Text("google")),
-                TextButton(onPressed: () {}, child: Text("phone")),
+                SizedBox(
+                  height: 30,
+                ),
+                TextFormField(
+                  style: TextStyle(color: Colors.black),
+                  decoration: InputDecoration(
+                    suffixIcon: Icon(
+                      Icons.email_rounded,
+                      color: Colors.grey,
+                    ),
+                    labelText: "email",
+                    labelStyle: TextStyle(color: fieldcolor, fontSize: 18),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15),
+                      borderSide: BorderSide(width: 1.5, color: fieldcolor),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15),
+                      borderSide: BorderSide(width: 1.5, color: fieldcolor),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                TextFormField(
+                  obscureText: true,
+                  style: TextStyle(color: Colors.black),
+                  decoration: InputDecoration(
+                    suffixIcon: Icon(
+                      Icons.lock_rounded,
+                      color: Colors.grey,
+                    ),
+                    labelText: "password",
+                    labelStyle: TextStyle(color: fieldcolor, fontSize: 18),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15),
+                      borderSide: BorderSide(width: 1.5, color: fieldcolor),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15),
+                      borderSide: BorderSide(width: 1.5, color: fieldcolor),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                // Padding(
+                //   padding: const EdgeInsets.all(10.0),
+                //   child: Row(
+                //     mainAxisAlignment: MainAxisAlignment.end,
+                //     children: [
+                //       InkWell(
+                //           child: Text(
+                //         "forgot password",
+                //         style: TextStyle(color: Colors.blue, fontSize: 16),
+                //       )),
+                //     ],
+                //   ),
+                // ),
+                InkWell(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Homepage()));
+                  },
+                  child: Container(
+                    child: Center(
+                        child: Text(
+                      "Sign Up",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 22),
+                    )),
+                    width: MediaQuery.of(context).size.width * 0.9,
+                    height: 60,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.blue,
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  "or",
+                  style: TextStyle(fontSize: 22, color: fieldcolor),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Container(
+                  width: MediaQuery.of(context).size.width - 60,
+                  height: 70,
+                  child: Card(
+                    color: Colors.white,
+                    //elevation: 8,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                        side: BorderSide(width: 1, color: Colors.grey)),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          'images/google.png',
+                          scale: 15,
+                        ),
+                        SizedBox(
+                          width: 20,
+                        ),
+                        Text(
+                          "Continue with Google",
+                          style: TextStyle(color: Colors.black, fontSize: 18),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  width: MediaQuery.of(context).size.width - 60,
+                  height: 70,
+                  child: Card(
+                    color: Colors.white,
+                    //elevation: 8,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                        side: BorderSide(width: 1, color: fieldcolor)),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          'images/phone-call.png',
+                          scale: 15,
+                        ),
+                        SizedBox(
+                          width: 20,
+                        ),
+                        Text(
+                          "Continue with Phone",
+                          style: TextStyle(color: Colors.black, fontSize: 18),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text(
+                      "If you are an existing user ",
+                      style: TextStyle(color: Colors.black, fontSize: 16),
+                    ),
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => Login()));
+                      },
+                      child: Text(
+                        "Login",
+                        style: TextStyle(color: Colors.blue, fontSize: 16),
+                      ),
+                    )
+                  ],
+                )
               ],
             ),
           ),
