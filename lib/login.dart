@@ -1,6 +1,7 @@
-// ignore_for_file: prefer_const_constructors, sort_child_properties_last
+// ignore_for_file: prefer_const_constructors, sort_child_properties_last, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:gdsc/homepage.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -33,9 +34,12 @@ class _LoginState extends State<Login> {
                   height: 30,
                 ),
                 TextFormField(
-                  
                   style: TextStyle(color: Colors.black),
                   decoration: InputDecoration(
+                    suffixIcon: Icon(
+                      Icons.email_rounded,
+                      color: Colors.grey,
+                    ),
                     labelText: "email",
                     labelStyle: TextStyle(color: Colors.black, fontSize: 18),
                     focusedBorder: OutlineInputBorder(
@@ -55,6 +59,10 @@ class _LoginState extends State<Login> {
                   obscureText: true,
                   style: TextStyle(color: Colors.black),
                   decoration: InputDecoration(
+                    suffixIcon: Icon(
+                      Icons.lock_rounded,
+                      color: Colors.grey,
+                    ),
                     labelText: "password",
                     labelStyle: TextStyle(color: Colors.black, fontSize: 18),
                     focusedBorder: OutlineInputBorder(
@@ -67,11 +75,27 @@ class _LoginState extends State<Login> {
                     ),
                   ),
                 ),
-                SizedBox(
-                  height: 20,
+                // SizedBox(
+                //   height: 20,
+                // ),
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      InkWell(
+                          child: Text(
+                        "forgot password",
+                        style: TextStyle(color: Colors.blue, fontSize: 16),
+                      )),
+                    ],
+                  ),
                 ),
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Homepage()));
+                  },
                   child: Container(
                     child: Center(
                         child: Text(
@@ -89,6 +113,10 @@ class _LoginState extends State<Login> {
                     ),
                   ),
                 ),
+                // SizedBox(
+                //   height: 10,
+                // ),
+
                 TextButton(onPressed: () {}, child: Text("google")),
                 TextButton(onPressed: () {}, child: Text("phone")),
               ],
