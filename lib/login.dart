@@ -1,8 +1,10 @@
-// ignore_for_file: prefer_const_constructors, sort_child_properties_last, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, sort_child_properties_last, prefer_const_literals_to_create_immutables, use_build_context_synchronously
 
 import 'package:flutter/material.dart';
 import 'package:gdsc/homepage.dart';
 import 'package:gdsc/signup.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -13,6 +15,9 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   Color fieldcolor = Colors.grey;
+  FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,6 +45,7 @@ class _LoginState extends State<Login> {
                   height: 30,
                 ),
                 TextFormField(
+                  controller: emailController,
                   style: TextStyle(color: Colors.black),
                   decoration: InputDecoration(
                     suffixIcon: Icon(
@@ -62,6 +68,7 @@ class _LoginState extends State<Login> {
                   height: 20,
                 ),
                 TextFormField(
+                  controller: passwordController,
                   obscureText: true,
                   style: TextStyle(color: Colors.black),
                   decoration: InputDecoration(
@@ -98,9 +105,20 @@ class _LoginState extends State<Login> {
                   ),
                 ),
                 InkWell(
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Homepage()));
+                  onTap: () async {
+                    try {
+                      UserCredential userCredential =
+                          await firebaseAuth.signInWithEmailAndPassword(
+                              email: emailController.text,
+                              password: passwordController.text);
+                      Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(builder: (context) => Homepage()),
+                          (route) => false);
+                    } catch (e) {
+                      final snackBar = SnackBar(content: Text(e.toString()));
+                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                    }
                   },
                   child: Container(
                     child: Center(
@@ -129,30 +147,35 @@ class _LoginState extends State<Login> {
                 SizedBox(
                   height: 20,
                 ),
-                Container(
-                  width: MediaQuery.of(context).size.width - 60,
-                  height: 70,
-                  child: Card(
-                    color: Colors.white,
-                    //elevation: 8,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
-                        side: BorderSide(width: 1, color: Colors.grey)),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          'images/google.png',
-                          scale: 15,
-                        ),
-                        SizedBox(
-                          width: 20,
-                        ),
-                        Text(
-                          "Continue with Google",
-                          style: TextStyle(color: Colors.black, fontSize: 18),
-                        )
-                      ],
+                InkWell(
+                  onTap: () {
+                    GoogleSignIn().signIn();
+                  },
+                  child: Container(
+                    width: MediaQuery.of(context).size.width - 60,
+                    height: 70,
+                    child: Card(
+                      color: Colors.white,
+                      //elevation: 8,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                          side: BorderSide(width: 1, color: Colors.grey)),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Image.asset(
+                            'images/google.png',
+                            scale: 15,
+                          ),
+                          SizedBox(
+                            width: 20,
+                          ),
+                          Text(
+                            "Continue with Google",
+                            style: TextStyle(color: Colors.black, fontSize: 18),
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -172,14 +195,14 @@ class _LoginState extends State<Login> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Image.asset(
-                          'images/phone-call.png',
+                          'images/facebook.png',
                           scale: 15,
                         ),
                         SizedBox(
                           width: 20,
                         ),
                         Text(
-                          "Continue with Phone",
+                          "Continue with Facebook",
                           style: TextStyle(color: Colors.black, fontSize: 18),
                         )
                       ],
