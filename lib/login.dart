@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, sort_child_properties_last, prefer_const_literals_to_create_immutables, use_build_context_synchronously
 
 import 'package:flutter/material.dart';
+import 'package:gdsc/firebase_services.dart';
 import 'package:gdsc/homepage.dart';
 import 'package:gdsc/signup.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -148,8 +149,10 @@ class _LoginState extends State<Login> {
                   height: 20,
                 ),
                 InkWell(
-                  onTap: () {
-                    GoogleSignIn().signIn();
+                  onTap: () async{
+                    await FirebaseServices().SignInGoogle();
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Homepage()));
                   },
                   child: Container(
                     width: MediaQuery.of(context).size.width - 60,
