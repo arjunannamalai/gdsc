@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:gdsc/homepage.dart';
 import 'package:gdsc/signup.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SignUp(),
+      home: Homepage(),
     );
   }
 }
