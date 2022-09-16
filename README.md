@@ -1,8 +1,9 @@
 # gdsc
  Firebase
 
-![1](https://user-images.githubusercontent.com/87747431/190618725-bd9301f5-91aa-403b-b97f-ad10f14ee6ca.png | width=100)
-<img src="https://user-images.githubusercontent.com/87747431/190618725-bd9301f5-91aa-403b-b97f-ad10f14ee6ca.png" width="600">
+<img src="https://user-images.githubusercontent.com/87747431/190618725-bd9301f5-91aa-403b-b97f-ad10f14ee6ca.png" width="400">
+<img src="https://user-images.githubusercontent.com/87747431/190618738-6938f2fe-9ade-47e7-aff4-4b381cdcc6a5.png)" width="400">
+
 ![2](https://user-images.githubusercontent.com/87747431/190618738-6938f2fe-9ade-47e7-aff4-4b381cdcc6a5.png)
 ![3](https://user-images.githubusercontent.com/87747431/190618744-be81fac8-05e5-4790-8eae-7b4b15087fc4.png)
 ![4](https://user-images.githubusercontent.com/87747431/190618762-b636f16b-0e43-4e86-a05c-24f8dd6a632a.png)
