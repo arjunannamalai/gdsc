@@ -5,7 +5,6 @@ import 'package:gdsc/firebase_services.dart';
 import 'package:gdsc/homepage.dart';
 import 'package:gdsc/signup.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -31,6 +30,23 @@ class _LoginState extends State<Login> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
+                SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  children: [
+                    Text(
+                      "Neom",
+                      style: TextStyle(
+                          fontSize: 58,
+                          fontWeight: FontWeight.bold,
+                          color: Color.fromARGB(255, 0, 122, 222)),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 20,
+                ),
                 Row(
                   children: [
                     Text(
@@ -149,7 +165,7 @@ class _LoginState extends State<Login> {
                   height: 20,
                 ),
                 InkWell(
-                  onTap: () async{
+                  onTap: () async {
                     await FirebaseServices().SignInGoogle();
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => Homepage()));
@@ -185,33 +201,33 @@ class _LoginState extends State<Login> {
                 SizedBox(
                   height: 10,
                 ),
-                Container(
-                  width: MediaQuery.of(context).size.width - 60,
-                  height: 70,
-                  child: Card(
-                    color: Colors.white,
-                    //elevation: 8,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
-                        side: BorderSide(width: 1, color: fieldcolor)),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          'images/facebook.png',
-                          scale: 15,
-                        ),
-                        SizedBox(
-                          width: 20,
-                        ),
-                        Text(
-                          "Continue with Facebook",
-                          style: TextStyle(color: Colors.black, fontSize: 18),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
+                // Container(
+                //   width: MediaQuery.of(context).size.width - 60,
+                //   height: 70,
+                //   child: Card(
+                //     color: Colors.white,
+                //     //elevation: 8,
+                //     shape: RoundedRectangleBorder(
+                //         borderRadius: BorderRadius.circular(20),
+                //         side: BorderSide(width: 1, color: fieldcolor)),
+                //     child: Row(
+                //       mainAxisAlignment: MainAxisAlignment.center,
+                //       children: [
+                //         Image.asset(
+                //           'images/facebook.png',
+                //           scale: 15,
+                //         ),
+                //         SizedBox(
+                //           width: 20,
+                //         ),
+                //         Text(
+                //           "Continue with Facebook",
+                //           style: TextStyle(color: Colors.black, fontSize: 18),
+                //         )
+                //       ],
+                //     ),
+                //   ),
+                // ),
                 SizedBox(
                   height: 20,
                 ),

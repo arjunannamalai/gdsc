@@ -5,7 +5,6 @@ import 'package:gdsc/firebase_services.dart';
 import 'package:gdsc/homepage.dart';
 import 'package:gdsc/login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);
@@ -33,6 +32,23 @@ class _SignUpState extends State<SignUp> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
+                SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  children: [
+                    Text(
+                      "Neom",
+                      style: TextStyle(
+                          fontSize: 58,
+                          fontWeight: FontWeight.bold,
+                          color: Color.fromARGB(255, 0, 122, 222)),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 20,
+                ),
                 Row(
                   children: [
                     Text(
@@ -94,19 +110,6 @@ class _SignUpState extends State<SignUp> {
                 SizedBox(
                   height: 20,
                 ),
-                // Padding(
-                //   padding: const EdgeInsets.all(10.0),
-                //   child: Row(
-                //     mainAxisAlignment: MainAxisAlignment.end,
-                //     children: [
-                //       InkWell(
-                //           child: Text(
-                //         "forgot password",
-                //         style: TextStyle(color: Colors.blue, fontSize: 16),
-                //       )),
-                //     ],
-                //   ),
-                // ),
                 InkWell(
                   onTap: () async {
                     try {
@@ -187,33 +190,6 @@ class _SignUpState extends State<SignUp> {
                 ),
                 SizedBox(
                   height: 10,
-                ),
-                Container(
-                  width: MediaQuery.of(context).size.width - 60,
-                  height: 70,
-                  child: Card(
-                    color: Colors.white,
-                    //elevation: 8,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
-                        side: BorderSide(width: 1, color: fieldcolor)),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          'images/facebook.png',
-                          scale: 15,
-                        ),
-                        SizedBox(
-                          width: 20,
-                        ),
-                        Text(
-                          "Continue with Facebook",
-                          style: TextStyle(color: Colors.black, fontSize: 18),
-                        )
-                      ],
-                    ),
-                  ),
                 ),
                 SizedBox(
                   height: 20,
